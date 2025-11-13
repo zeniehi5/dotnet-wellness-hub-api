@@ -1,0 +1,32 @@
+# ===================================================
+# .NET Core / .NET 10
+# ===================================================
+
+# 1. 빌드 결과물 (가장 중요! 193개 파일의 99%)
+[Bb]in/
+[Oo]bj/
+
+# 2. 개인용 에디터 설정 (VS Code 등)
+.vscode/
+.idea/
+*.suo
+*.user
+
+# 3. 민감한 비밀 정보 (매우 중요!)
+# (DB 비밀번호가 들어있는 개발용 설정 파일)
+appsettings.Development.json
+user-secrets.json
+
+# 4. OS 생성 파일 (macOS / Windows)
+.DS_Store
+Thumbs.db
+
+# 5. 기타 (로그, NuGet 패키지 등)
+*.log
+*.nupkg
+packages/
+
+# 6. EF Core Migrations (DB 파일 - 혹시 SQLite를 쓴다면)
+*.db
+*.db-shm
+*.db-wal
