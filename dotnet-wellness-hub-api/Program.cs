@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure PostgreSQL Database
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
 
@@ -16,6 +18,19 @@ builder.Services.AddCors(options =>
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
+});
+
+// Configure YouTube API Client
+var youtubeApiKey = builder.Configuration["YouTube:ApiKey"];
+
+builder.Services.AddSingleton<YouTubeApiClient>(sp => 
+{
+    if (string.IsNullOrEmpty(youtubeApiKey))
+    {
+        throw new InvalidOperationException("YouTube API Key is not configured.");
+    }
+    
+    return new YouTubeApiClient(youtubeApiKey);
 });
 
 // Add services to the container.
