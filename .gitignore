@@ -15,6 +15,7 @@
 # 3. 민감 정보 & 개발용 설정 파일
 appsettings.*.json
 user-secrets.json
+dotnet-wellness-hub-api/appsettings.json
 
 # 4. OS 생성 파일
 .DS_Store
